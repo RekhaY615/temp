@@ -1,0 +1,24 @@
+{
+	"name": "dataflow_input",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "AzureDataLakeStorage1",
+						"type": "LinkedServiceReference"
+					},
+					"schemaLinkedService": {
+						"referenceName": "AzureDataLakeStorage1",
+						"type": "LinkedServiceReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'excel',\n\tfileSystem: 'schooltest1',\n\tfileName: 'student_data.xlsx',\n\tsheetName: 'student_data',\n\tfirstRowAsHeader: true,\n\tpartitionBy('fixed', 2,\n\t\tERROR_FUNCTION('')\n\t)) ~> source1"
+		}
+	}
+}
