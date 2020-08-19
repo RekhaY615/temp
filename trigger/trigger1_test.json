@@ -1,0 +1,25 @@
+{
+	"name": "trigger1_test",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "copy_test",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 1,
+				"startTime": "2020-08-19T12:55:00.000Z",
+				"endTime": "2020-08-20T12:59:00.000Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}
