@@ -2,11 +2,24 @@
 	"name": "AzureSqlDatabase1",
 	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
+		"parameters": {
+			"db_name": {
+				"type": "string",
+				"defaultValue": "DWH_dev"
+			},
+			"password": {
+				"type": "string",
+				"defaultValue": "Rekha123"
+			},
+			"domain": {
+				"type": "string",
+				"defaultValue": "goldengatewaydev.database.windows.net"
+			}
+		},
 		"annotations": [],
 		"type": "AzureSqlDatabase",
 		"typeProperties": {
-			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=goldengatewaydev.database.windows.net;initial catalog=DWH_dev;user id=rekhay",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIlBJUEVMSU5FVEVTVEFaVVJFX2Q3ZWFhZGRkLTMwNWUtNGZiYy1hMDE1LTJiNTdkYzIyYTE0NSINCn0="
+			"connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=@{linkedService().domain};Initial Catalog=@{linkedService().db_name};User ID=rekhay;Password=@{linkedService().password}"
 		}
 	}
 }
